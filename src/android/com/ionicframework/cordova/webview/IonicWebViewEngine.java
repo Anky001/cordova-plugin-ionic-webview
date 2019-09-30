@@ -119,16 +119,9 @@ public class IonicWebViewEngine extends SystemWebViewEngine {
       this.parser = parser;
     }
 
-    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
-      return localServer.shouldInterceptRequest(request.getUrl(), request);
-    }
-
-    @TargetApi(Build.VERSION_CODES.KITKAT)
-    @Override
-    public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
-      return localServer.shouldInterceptRequest(Uri.parse(url), null);
+      return super.shouldInterceptRequest(view, request);
     }
 
     @Override
